@@ -8,8 +8,8 @@
     <target>economic_growth_over_the_past_10_years.csv</target>
       
     <prediction>
-    <country>Russia</country>
-    <year>2004</year>
+      <country>Russia</country>
+      <year>2004</year>
     </prediction>
     
   </data>

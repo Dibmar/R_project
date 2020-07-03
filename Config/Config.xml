@@ -1,3 +1,6 @@
+# config
+# This is the main configuration of the program, have to be chosen data to process
+
 <config>
   
   <sep>,</sep>
@@ -8,12 +11,12 @@
     <target>economic_growth_over_the_past_10_years.csv</target>
       
     <prediction>
-      <country>Russia</country>
-      <year>2004</year>
+      <country></country>
+      <year></year>
     </prediction>
     
   </data>
   
   <testRate>0.2</testRate>
-  <outpuFile>output</outpuFile>
+  <outputFile></outputFile>
 </config>

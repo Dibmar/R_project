@@ -1,5 +1,5 @@
 # read_config
-# This function is called by the skeleton function
+# This function is called by the skeleton function and read the config
 
 read_config <- function (path){
 
@@ -11,33 +11,67 @@ read_config <- function (path){
   
   tryCatch(expr = {
     
-    #Leer el xml y convertirlo a lista
+    #Read xml and convert it to a list
     config <- XML::xmlToList(xmlParse(configPath))
     
     
   }, error = function(e){
     
-    logerror("Config no encontrado en su ruta. Verifica que se llame config.xml",
+    logerror("Config was not find on the path. Check if it´s call config.xml",
              logger = 'log')
     stop()
   })
   
-  loginfo("Config leido.", logger = 'log')
+  loginfo("Config readed.", logger = 'log')
   
   validateConfigNodes(config)
   
-  config$data$predictors <- trimws(strsplit(config$columnas$predictors, ",")[[1]])
-  config$data$target <- trimws(strsplit(config$columnas$target, ",")[[1]])
-  config$data$prediction <- trimws(strsplit(config$columnas$target, ",")[[1]])
+  config$data$predictors <- trimws(strsplit(config$data$predictors, ",")[[1]])
   
-  config$data$prediction$country <- trimws(strsplit(config$columnas$target, ",")[[1]])
-  config$data$prediction$year <- trimws(strsplit(config$columnas$target, ",")[[1]])
+  checkTarget <- is.null(config$data$target)
+  if(checkTarget){
+    logerror("Target is ampty, choose another one", logger = 'log')
+    stop()
+  }
   
-  separadoresAceptados <- config$input$sep %in% c(",", ";")
+  checkCountry <- is.null(config$prediction$country)
+  if(checkCountry){
+    logerror("You need to choose one country", logger = 'log')
+    stop()
+  }
+  
+  checkYear <- is.null(config$prediction$year)
+  if(checkYear){
+    logerror("You need to choose the year", logger = 'log')
+    stop()
+    
+  else
+    config$prediction$year <- as.numeric(config$prediction$year)
+  }
+  
+  checkTestRate <- is.null(config$testRate)
+  if(checkTestRate){
+    
+    logerror("You need to choose the test rate", logger = 'log')
+    stop()
+    
+  else
+      config$testRate <- as.numeric(config$prediction$year) %in% c(0:1)
+  }  
+  
+  checkOutputFile <- is.null(config$outputFile)
+  if(checkOutputFile){
+    
+    logerror("No output file, create it", logger = 'log')
+    
+    stop()
+  }
+
+  separadoresAceptados <- config$sep %in% c(",", ";")
   
   if(!separadoresAceptados){
     
-    logerror("Sep solo puede valer ',' o ';' ", logger = 'log')
+    logerror("Sep just can be ',' or ';' ", logger = 'log')
     stop()
     
   }
@@ -46,31 +80,16 @@ read_config <- function (path){
   
 } 
 
-#' @title validateConfigNodes
-#'
-#' @param config 
-#'
-#' @import logging
-#' 
+# validateConfigNodes function
+ 
 validateConfigNodes <- function(config){
   
-  nodoPrincipal <- identical(names(config), c("input", "columnas"))
-  nodoInput <- identical(names(config$input), c("name", "sep"))
-  nodoColumnas <- identical(names(config$columnas), c("ID", "predictorasNumericas",
-                                                      "fuenteOriginal", "dominio_mail",
-                                                      "fechas", "mails", "target", "llamada"))
-  
-  nodoFechas <- identical(names(config$columnas$fechas), c("creacion", "ultima_mod",
-                                                           "apertura_ultimo", "envio_ultimo",
-                                                           "apertura_primero", "envio_primero",
-                                                           "visita_primero", "visita_ultimo",
-                                                           "tiempos"))
-  
-  nodoMails <- identical(names(config$columnas$mails), c("mailsDl", "mailsCl", "mailsOp", "ratios"))
-  
-  nodos <- c("nodoPrincipal" = nodoPrincipal, "nodoInput" = nodoInput, 
-             "nodoColumnas" = nodoColumnas, "nodoFechas" = nodoFechas,
-             "nodoMails" = nodoMails)
+  nodoPrincipal <- identical(names(config), c("sep", "data", "testRate", "outputFile"))
+  nodoData <- identical(names(config$data), c("predictors", "target", "prediction"))
+  nodoPrediction <- identical(names(config$data$prediction), c("country", "year"))
+
+  nodos <- c("nodoPrincipal" = nodoPrincipal, "nodoData" = nodoData, 
+             "nodoPrediction" = nodoPrediction)
   
   check <- all(nodos)
   
@@ -84,6 +103,4 @@ validateConfigNodes <- function(config){
     
   }
   
-}
-
 }

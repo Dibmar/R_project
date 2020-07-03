@@ -1,6 +1,5 @@
 #' read_data
-#' It's called by skeleton function
-#' reads the data and cleans it
+#' It's called by skeleton function and read the data
 
 read_data <- function(config, path){
   
@@ -16,14 +15,14 @@ read_data <- function(config, path){
       
     }, error = function(e){
       
-      logerror("Datos no encontrado en su ruta. Verifica el directorio de data y el config",
+      logerror("Data was not found on the path. Check the direction and the config",
                logger = 'log')
       stop()
     })
     
     if(nrow(datos) == 0 | ncol(datos) == 0){
       
-      logerror("Datos mal leido, verifica que tengan un buen formato. ",
+      logerror("Data was read poorly, check data format.",
                logger = 'log')
       stop()
       
@@ -49,14 +48,14 @@ read_target <- function(config, path){
     
   }, error = function(e){
     
-    logerror("Target no encontrado en su ruta. Verifica el directorio de data y el config",
+    logerror("Target was not found on the path. Check the direction and the config",
              logger = 'log')
     stop()
   })
   
   if(nrow(target) == 0 | ncol(target) == 0){
     
-    logerror("Target mal leido, verifica que tengan un buen formato. ",
+    logerror("Target was read poorly, check data format.",
              logger = 'log')
     stop()
     

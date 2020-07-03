@@ -38,5 +38,7 @@ to_ML <- function(df_1){
   set.seed(7)
   fit.rf <- train(y, data=dataset, method="rf", metric=metric, trControl=control)
   
-  return(fit.lda, fit.cart, fit.knn, fit.svm, fit.rf)
+  models <- c(fit.lda, fit.cart, fit.knn, fit.svm, fit.rf)
+  
+  return(models)
 }

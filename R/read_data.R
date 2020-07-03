@@ -3,14 +3,14 @@
 
 read_data <- function(config, path){
   
-  n <- list()
+  lista_df <- list()
   
   for (i in config$data$predictors){
     
     tryCatch(expr = {
-      
+      pathDatos <- paste0(path, 'data/', i)
       datos <- data.table::fread(pathDatos, sep = config$sep,
-                                 encoding = 'UTF-8', data.table = FALSE)
+                                 encoding = 'UTF-8', data.table = FALSE, header = T)
       
       
     }, error = function(e){
@@ -28,12 +28,11 @@ read_data <- function(config, path){
       
     }
     
-    n <- n.append(datos)
-    
-    return(datos)
+    lista_df[[i]] <- datos
     
   }
-  
+  loginfo("hola", logger = 'log')
+  return(n)
 }
 
 read_target <- function(config, path){

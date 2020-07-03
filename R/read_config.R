@@ -1,11 +1,10 @@
-# read_config
-# This function is called by the skeleton function and read the config
+#' read_config
+#' This function is called by the skeleton function and read the config
 
 read_config <- function (path){
 
   library(XML)
-  
-  
+
   configPath <- paste0(path, "config/config.xml")
   
   
@@ -34,30 +33,61 @@ read_config <- function (path){
     stop()
   }
   
-  checkCountry <- is.null(config$prediction$country)
+  checkCountry <- is.null(config$data$prediction$country)
   if(checkCountry){
     logerror("You need to choose one country", logger = 'log')
     stop()
   }
   
-  checkYear <- is.null(config$prediction$year)
+  checkYear <- is.null(config$data$prediction$year)
+  
   if(checkYear){
     logerror("You need to choose the year", logger = 'log')
     stop()
+
+  }else{
     
-  else
-    config$prediction$year <- as.numeric(config$prediction$year)
+    config$data$prediction$year <- as.numeric(config$data$prediction$year)
+    
   }
   
+  checkYearNa <- is.na(config$data$prediction$year)
+  
+  if(checkYearNa){
+    logerror("The year should be a number", logger = 'log')
+    stop()
+    
+  } 
   checkTestRate <- is.null(config$testRate)
+  
   if(checkTestRate){
     
     logerror("You need to choose the test rate", logger = 'log')
     stop()
     
-  else
-      config$testRate <- as.numeric(config$prediction$year) %in% c(0:1)
-  }  
+  }else{
+    
+      config$testRate <- as.numeric(config$testRate)
+  } 
+  
+  checkMenorUno <- config$testRate < 1
+  checkMayorZero <- config$testRate > 0
+  
+  if(!(checkMenorUno && checkMayorZero)){
+    
+    logerror("The test rate should ne a number between 0 and 1 ", logger = 'log')
+    stop()    
+    
+  }
+  
+  checkTestRateNa <- is.na(config$testRate)
+  
+  if(checkTestRateNa){
+    
+    logerror("The test rate should be a number", logger = 'log')
+    stop()
+    
+  }
   
   checkOutputFile <- is.null(config$outputFile)
   if(checkOutputFile){
@@ -104,3 +134,4 @@ validateConfigNodes <- function(config){
   }
   
 }
+

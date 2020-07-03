@@ -13,12 +13,7 @@ skeleton <- function (path){
       #Lectura del path
       loginfo("Leyendo path", logger = 'log')
       path_1 <- read_config(path)
-      loginfo("Path leído", logger = 'log')
-    
-      #Lectura de datos
-      loginfo("Leyendo datos", logger = 'log')
-      df <- import_data(path_1)
-      loginfo("Datos en .csv", logger = 'log')
+      loginfo("Path leido", logger = 'log')
     
       #Limpieza de datos
       loginfo("Limpiando datos", logger = 'log')

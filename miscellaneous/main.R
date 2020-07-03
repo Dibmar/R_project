@@ -1,7 +1,7 @@
 # main
 
 # directory set up
-directory <- # PATH HERE
+directory <- "R_project/R/skeleton"
   
 setwd(directory)
 

@@ -12,12 +12,12 @@ skeleton <- function (path){
     
       #Lectura del path
       loginfo("Leyendo path", logger = 'log')
-      path_1 <- read_config(path)
+      config <- read_config(path)
       loginfo("Path leido", logger = 'log')
     
       #Limpieza de datos
       loginfo("Limpiando datos", logger = 'log')
-      df_1 <- read_data(df)
+      df_1 <- read_data(config, path)
       loginfo("Datos limpios", logger = 'log')
     
       #Reestructuración de los datos

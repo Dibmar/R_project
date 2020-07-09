@@ -32,7 +32,12 @@ read_data <- function(config, path){
     
   }
   loginfo("hola", logger = 'log')
-  return(lista_df)
+  
+  target <- read_target(config, path)
+  
+  lista_datas <- list(predictoras = lista_df, target = target)
+  
+  return(lista_datas)
 }
 
 read_target <- function(config, path){
@@ -41,8 +46,8 @@ read_target <- function(config, path){
   
   tryCatch(expr = {
     
-    target <- data.table::fread(pathDatos, sep = config$sep,
-                               encoding = 'UTF-8', data.table = FALSE)
+    target <- data.table::fread(pathTarget, sep = config$sep,
+                               encoding = 'UTF-8', data.table = FALSE, header = T)
     
     
   }, error = function(e){

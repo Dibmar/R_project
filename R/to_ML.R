@@ -17,28 +17,18 @@ to_ML <- function(df_1){
   loginfo(dataset_summary, logger = 'log')
   loginfo("Resumen terminado", logger = 'log')
   
-  x <- dataset[,-1]
-  y <- dataset[,1]
+  # Simple linear regression model (lm means linear model)
+  model_1 <- train(mpg ~ wt,data = dataset, method = "lm")
   
-  # Linear Regression
-  set.seed(7)
-  fit.lda <- train(y, data=dataset, method="lda", metric=metric, trControl=control)
   
-  # CART
-  set.seed(7)
-  fit.cart <- train(y, data=dataset, method="rpart", metric=metric, trControl=control)
-  # KNN
-  set.seed(7)
-  fit.knn <- train(y, data=dataset, method="knn", metric=metric, trControl=control)
+  loginfo("Resumen de modelo de ML", logger = 'log')
   
-  # SVM
-  set.seed(7)
-  fit.svm <- train(y, data=dataset, method="svmRadial", metric=metric, trControl=control)
-  # Random Forest
-  set.seed(7)
-  fit.rf <- train(y, data=dataset, method="rf", metric=metric, trControl=control)
+  results <- resamples(model_1)
+  summary(results)
   
-  models <- c(fit.lda, fit.cart, fit.knn, fit.svm, fit.rf)
+  loginfo(results, logger = 'log')
+  loginfo("Resumen de modelo de ML terminado", logger = 'log')
   
-  return(models)
+  
+  return(model_1)
 }

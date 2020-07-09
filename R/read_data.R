@@ -32,7 +32,7 @@ read_data <- function(config, path){
     
   }
   loginfo("hola", logger = 'log')
-  return(n)
+  return(lista_df)
 }
 
 read_target <- function(config, path){

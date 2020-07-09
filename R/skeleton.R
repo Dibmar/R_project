@@ -23,23 +23,17 @@ skeleton <- function (path){
       
       #Reestructuración de los datos
       loginfo("Reconvirtiendo los datos", logger = 'log')
-      browser()
       df_1 <- reshape_data(config, df_1)
       loginfo("Datos reconvertidos", logger = 'log')
-    
+      
       #Carga de modelo de ML
       loginfo("Cargando en modelo de ML", logger = 'log')
-      df_model <- to_ML(df_1)
+      output <- to_ML(df_1, config)
       loginfo("Modelo de ML generado", logger = 'log')
-    
-      #Crosvalidation
-      loginfo("Comprobando eficacia", logger = 'log')
-      data <- check_model(df_model)
-      loginfo("Eficacia comprobada", logger = 'log')
-    
-      #Despedida y cierre
-      loginfo("Seleccionando datos", logger = 'log')
-      df <- closing(df, final_data)
+
+      #Generar output
+      loginfo("Generar output", logger = 'log')
+      createOutput(output, config, path)
       loginfo("Output generado", logger = 'log')
       
       }, error = function(e){

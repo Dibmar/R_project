@@ -33,9 +33,11 @@
   }
   
   df <- merge(df, lista_datas$target, by = c('country', 'variable'))
-
+  
+  predict_Y <-df[(df$variable == config$data$prediction$year & df$country == config$data$prediction$country), ]
+  
   datos <- na.omit(df)
 
-  return(datos)
-    
+  return(list(datos, predict_Y))
+
 }

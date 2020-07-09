@@ -20,9 +20,11 @@ skeleton <- function (path){
       df_1 <- read_data(config, path)
       loginfo("Datos limpios", logger = 'log')
     
+      
       #Reestructuración de los datos
       loginfo("Reconvirtiendo los datos", logger = 'log')
-      df_1 <- reshape_data(df_1)
+      browser()
+      df_1 <- reshape_data(config, df_1)
       loginfo("Datos reconvertidos", logger = 'log')
     
       #Carga de modelo de ML

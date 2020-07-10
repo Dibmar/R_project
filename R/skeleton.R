@@ -9,19 +9,18 @@ skeleton <- function (path){
     
       addHandler(writeToFile, logger = 'log', file = paste0(path, "/log/logfile.log"))
       loginfo("Inicio programa", logger = 'log')
-    
-      #Lectura del path
-      loginfo("Leyendo path", logger = 'log')
-      config <- read_config(path)
-      loginfo("Path leido", logger = 'log')
-    
-      #Limpieza de datos
-      loginfo("Limpiando datos", logger = 'log')
-      df_1 <- read_data(config, path)
-      loginfo("Datos limpios", logger = 'log')
-    
       
-      #Reestructuración de los datos
+      #Lectura del config
+      loginfo("Leyendo config", logger = 'log')
+      config <- read_config(path)
+      loginfo("Config leido", logger = 'log')
+        
+      #Lectura de datos
+      loginfo("Leyendo datos", logger = 'log')
+      df_1 <- read_data(config, path)
+      loginfo("Datos leidos", logger = 'log')
+    
+      #Reestructuración y limpieza de los datos
       loginfo("Reconvirtiendo los datos", logger = 'log')
       df_1 <- reshape_data(config, df_1)
       loginfo("Datos reconvertidos", logger = 'log')

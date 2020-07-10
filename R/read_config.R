@@ -88,7 +88,7 @@ read_config <- function (path){
     stop()
     
   }
-  
+
   checkOutputFile <- is.null(config$outputFile)
   if(checkOutputFile){
     
@@ -98,12 +98,9 @@ read_config <- function (path){
   }
 
   separadoresAceptados <- config$sep %in% c(",", ";")
-  
   if(!separadoresAceptados){
-    
-    logerror("Sep just can be ',' or ';' ", logger = 'log')
+    loggeror("Sep just can be , or ;", logger = "log")
     stop()
-    
   }
   
   return(config)

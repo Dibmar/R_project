@@ -1,6 +1,6 @@
 
 <config>
-  
+  <sep>,</sep>
   <data>
       
     <predictors>service_workers_percent_of_employment.csv, agriculture_workers_percent_of_employment.csv, industry_workers_percent_of_employment.csv</predictors>

@@ -1,5 +1,14 @@
-#' skeleton 
-#' Main package function
+
+#' @title skeleton
+#' @description Main package function
+#' 
+#' @param path The environment of project
+#' 
+#' @export
+#' @import logging
+#'
+#' @author Olga, Oda, Diomedes
+
 
 
 skeleton <- function (path){

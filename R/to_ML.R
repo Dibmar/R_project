@@ -1,6 +1,17 @@
-# to_ML
-# This function is called by skeleton
-# Hooks the df onto a machine learning model
+
+#' @title to_ML
+#' @description This function is called by skeleton and it hooks the df onto 
+#' a machine learning model
+#' 
+#' @param data DataFrame with reshape data from all datasets
+#' @param config List of configuration parameters 
+#'
+#' @import caret  Is a set of functions that attempt to streamline 
+#' the process for creating predictive models
+#' @import logging
+#'
+#' @examples
+
 library(caret)
 library(logging)
 

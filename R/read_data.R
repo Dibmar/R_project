@@ -1,5 +1,16 @@
-#' read_data
-#' It's called by skeleton function and read the data
+
+#' @title read_data
+#' @description It's called by skeleton function and read the data
+#' 
+#' @param config List of configuration parameters 
+#' @param path The environment of project
+#'
+#' @return
+#' 
+#' @import data.table
+#' @import logging
+#'
+#' @examples
 
 read_data <- function(config, path){
   

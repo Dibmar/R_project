@@ -1,5 +1,16 @@
-#' read_config
-#' This function is called by the skeleton function and read the config
+
+#' @title read_config
+#' 
+#' @description This function is called by the skeleton function and read the config
+#' 
+#' @param path The environment of project
+#'
+#' @return
+#' 
+#' @import XML
+#' @import logging
+#'
+#' @examples
 
 read_config <- function (path){
 

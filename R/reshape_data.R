@@ -1,9 +1,16 @@
-# reshape_data
-# This function is called by skeleton
-# Reshapes the df to a [n, 2] shape
 
-
-  
+#' @title reshape_data
+#' 
+#' @description This function is called by skeleton and reshapes the df to a [n, 2] shape
+#' 
+#' @param data
+#' @param config List of configuration parameters 
+#'
+#' @return
+#' 
+#' @import logging
+#'
+#' @examples
   
   reshape_data <- function(config, lista_datas){
     

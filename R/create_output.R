@@ -10,7 +10,7 @@
 #' @import logging
 #'
 #' @return
-
+#' 
 createOutput <-  function(output, config, path){
     
   nameOutput <- paste0(path, "output/Russia2004.csv")

@@ -8,9 +8,7 @@
 #' @import logging
 #'
 #' @author Olga, Oda, Diomedes
-
-
-
+#' 
 skeleton <- function (path){
   tryCatch(expr = {
     

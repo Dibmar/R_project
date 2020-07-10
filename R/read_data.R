@@ -1,4 +1,3 @@
-
 #' @title read_data
 #' @description It's called by skeleton function and read the data
 #' 
@@ -9,9 +8,7 @@
 #' 
 #' @import data.table
 #' @import logging
-#'
-#' @examples
-
+#' 
 read_data <- function(config, path){
   
   lista_df <- list()
@@ -51,6 +48,19 @@ read_data <- function(config, path){
   return(lista_datas)
 }
 
+#' @title read_target
+#' @description It's called by skeleton function and read the target
+#' 
+#' @param config List of configuration parameters 
+#' @param path The environment of project
+#'
+#' @return
+#' 
+#' @import data.table
+#' @import logging
+#'
+#' @examples
+#' 
 read_target <- function(config, path){
   
   pathTarget <- paste0(path, "data/", config$data$target)

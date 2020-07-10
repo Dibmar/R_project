@@ -3,16 +3,14 @@
 #' 
 #' @description This function is called by skeleton and reshapes the df to a [n, 2] shape
 #' 
-#' @param data
+#' @param data list of datasets
 #' @param config List of configuration parameters 
 #'
 #' @return
 #' 
 #' @import logging
-#'
-#' @examples
-  
-  reshape_data <- function(config, lista_datas){
+#' 
+reshape_data <- function(config, lista_datas){
     
     
   for (i in 1:length(lista_datas$predictoras)){

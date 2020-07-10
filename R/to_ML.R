@@ -9,13 +9,11 @@
 #' @import caret  Is a set of functions that attempt to streamline 
 #' the process for creating predictive models
 #' @import logging
-#'
-#' @examples
-
-library(caret)
-library(logging)
-
+#' 
 to_ML <- function(df_1, config){
+  
+  library(caret)
+  library(logging)
 
    df_orig <- data.frame(df_1[1])
    predict_y <- data.frame(df_1[2])

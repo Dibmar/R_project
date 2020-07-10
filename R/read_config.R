@@ -10,8 +10,6 @@
 #' @import XML
 #' @import logging
 #'
-#' @examples
-
 read_config <- function (path){
 
   library(XML)

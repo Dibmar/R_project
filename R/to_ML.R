@@ -6,8 +6,7 @@
 #' @param data DataFrame with reshape data from all datasets
 #' @param config List of configuration parameters 
 #'
-#' @import caret  Is a set of functions that attempt to streamline 
-#' the process for creating predictive models
+#' @import caret  
 #' @import logging
 #' 
 to_ML <- function(df_1, config){
